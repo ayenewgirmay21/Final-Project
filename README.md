@@ -1,4 +1,4 @@
-# MediServe - MERN Starter
+# MediServe: Hospital Management & Appointment System
 
 ## What you got
 - Backend: Express, MongoDB, JWT auth
