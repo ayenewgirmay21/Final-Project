@@ -1,38 +1,49 @@
-# MediServe: Hospital Management & Appointment System
+# 🏥 MediServe: Hospital Management & Appointment System
 
-## What you got
-- Backend: Express, MongoDB, JWT auth
-- Frontend: React (Vite), simple pages: Register, Login, Dashboard
-- Basic models: User, Appointment, Record
-- Sample endpoints:
-  - POST /api/auth/register
-  - POST /api/auth/login
-  - GET /api/users/me
-  - POST /api/appointments/book
-  - GET /api/appointments
-  - PATCH /api/appointments/:id/status
-  - POST /api/records/:patientId
-  - GET /api/records/:patientId
+MediServe is a **Hospital Management and Appointment Booking System** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**.  
+This platform is designed to streamline hospital operations — allowing **patients** to book appointments, **doctors** to manage their schedules, and **administrators** to oversee the entire system.
 
-## Run locally
+---
 
-### Backend
-1. cd backend
-2. npm install
-3. copy .env.sample to .env and set MONGO_URI & JWT_SECRET
-4. npm run dev
+## 🚀 Features
 
-### Frontend
-1. cd frontend
-2. npm install
-3. npm run dev
+### 🧑‍⚕️ Patient Side
+- Patient registration and login
+- Appointment booking with preferred doctor and department
+- View appointment history and status
+- Secure authentication using JWT
 
-Backend runs by default on http://localhost:5001 and frontend on http://localhost:5173
+### 👨‍⚕️ Doctor Side
+- Doctor login and dashboard
+- Manage appointment schedules
+- View patient details
+- Update appointment status
 
-This is a starter; expand UI, validation, error handling, and production deployment as needed.
+### 🏢 Admin Side
+- Admin dashboard with full control
+- Manage doctors and patients
+- Approve/reject appointments
+- Payment tracking
+- Lab report management
+- Department and schedule management
 
-## Added features
-- Departments (Pharmacy, Laboratory, Emergency, Medical Ward, Surgical Ward) via /api/departments
-- Basic Payments system via /api/payments (create, list, update status)
+### ⚡ System Features
+- Full CRUD functionality
+- RESTful API architecture
+- Authentication & Authorization
+- Middleware for security and logging
+- Modern UI with responsive design
+- Centralized error handling
 
-Note: Department entries should be created by an admin user. Payments are created by patients; gateway integration is left as next step.
+---
+
+## 🛠️ Tech Stack
+
+| Layer         | Technology                          |
+|---------------|-------------------------------------|
+| Frontend      | React.js, React Router, Tailwind CSS / Bootstrap |
+| Backend       | Node.js, Express.js                 |
+| Database      | MongoDB (Mongoose)                  |
+| Authentication| JSON Web Token (JWT)                |
+| Tools         | Git, Postman, VS Code               |
+
