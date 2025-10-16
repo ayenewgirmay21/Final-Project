@@ -27,7 +27,7 @@
 2. npm install
 3. npm run dev
 
-Backend runs by default on http://localhost:5000 and frontend on http://localhost:5173
+Backend runs by default on http://localhost:5001 and frontend on http://localhost:5173
 
 This is a starter; expand UI, validation, error handling, and production deployment as needed.
 
