@@ -22,13 +22,14 @@ const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
     useContext(Context);
 
+  // ✅ Run only once on mount
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
           "https://mediserve-final-project.onrender.com/api/v1/user/admin/me",
           {
-            withCredentials: true,
+            withCredentials: true, // 🔑 important for cookies
           }
         );
         setIsAuthenticated(true);
@@ -39,7 +40,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthenticated]);
+  }, []); // ✅ empty dependency array
 
   return (
     <Router>
