@@ -14,14 +14,15 @@ config({path: "./config/config.env" });
 app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL_ONE || "https://mediserve-frontend-final-project.vercel.app",
-      process.env.FRONTEND_URL_TWO || "https://mediserve-frontend-final-project.vercel.app"
+      "https://mediserve-frontend-final-project.vercel.app",
+      "https://mediserve-dashboard-final-project.vercel.app",
+      process.env.FRONTEND_URL_ONE,
+      process.env.FRONTEND_URL_TWO
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   })
 );
-
 
 app.use(cookieParser());
 app.use(express.json());
