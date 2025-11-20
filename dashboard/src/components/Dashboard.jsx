@@ -7,9 +7,7 @@ import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 const Dashboard = () => {
-  const { isAuthenticated, admin } = useContext(Context);
   const [appointments, setAppointments] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -18,72 +16,70 @@ const Dashboard = () => {
           "https://mediserve-final-project.onrender.com/api/v1/appointment/getall",
           { withCredentials: true }
         );
-        setAppointments(data?.appointments || []);
-      } catch (err) {
-        console.error("Failed to fetch appointments:", err);
-        toast.error("Failed to fetch appointments.");
+        setAppointments(data.appointments);
+      } catch (error) {
         setAppointments([]);
-      } finally {
-        setLoading(false);
       }
     };
     fetchAppointments();
   }, []);
 
-  const handleUpdateStatus = async (id, status) => {
+  const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `https://mediserve-final-project.onrender.com/api/v1/appointment/update/${id}`,
+        `https://mediserve-final-project.onrender.com/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
-      setAppointments((prev) =>
-        prev.map((appt) => (appt._id === id ? { ...appt, status } : appt))
+      setAppointments((prevAppointments) =>
+        prevAppointments.map((appointment) =>
+          appointment._id === appointmentId
+            ? { ...appointment, status }
+            : appointment
+        )
       );
-      toast.success(data?.message || "Status updated");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to update status");
+      toast.success(data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
   };
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (loading) return <p>Loading dashboard...</p>;
+  const { isAuthenticated, admin } = useContext(Context);
+  if (!isAuthenticated) {
+    return <Navigate to={"/login"} />;
+  }
 
   return (
-    <section className="dashboard page">
-      <div className="banner">
-        <div className="firstBox">
-          <img src="/doc.png" alt="docImg" />
-          <div className="content">
-            <div>
-              <p>Hello,</p>
-              <h5>
-                {admin?.firstName && admin?.lastName
-                  ? `${admin.firstName} ${admin.lastName}`
-                  : "Admin"}
-              </h5>
+    <>
+      <section className="dashboard page">
+        <div className="banner">
+          <div className="firstBox">
+            <img src="/doc.png" alt="docImg" />
+            <div className="content">
+              <div>
+                <p>Hello ,</p>
+                <h5>
+                  {admin &&
+                    `${admin.firstName} ${admin.lastName}`}{" "}
+                </h5>
+              </div>
+              <p>
+              The Admin Dashboard is a centralized control panel that provides administrators
+               with a comprehensive overview of the system.
+              </p>
             </div>
-            <p>
-              The Admin Dashboard is a centralized control panel that provides
-              administrators with a comprehensive overview of the system.
-            </p>
+          </div>
+          <div className="secondBox">
+            <p>Total Appointments</p>
+            <h3>1500</h3>
+          </div>
+          <div className="thirdBox">
+            <p>Registered Doctors</p>
+            <h3>10</h3>
           </div>
         </div>
-        <div className="secondBox">
-          <p>Total Appointments</p>
-          <h3>{appointments.length}</h3>
-        </div>
-        <div className="thirdBox">
-          <p>Registered Doctors</p>
-          <h3>10</h3>
-        </div>
-      </div>
-
-      <div className="banner">
-        <h5>Appointments</h5>
-        {appointments.length === 0 ? (
-          <p>No appointments found</p>
-        ) : (
+        <div className="banner">
+          <h5>Appointments</h5>
           <table>
             <thead>
               <tr>
@@ -96,57 +92,49 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments.map((appt) => (
-                <tr key={appt._id}>
-                  <td>
-                    {appt?.patient
-                      ? `${appt.patient.firstName} ${appt.patient.lastName}`
-                      : "Unknown"}
-                  </td>
-                  <td>
-                    {appt?.appointment_date
-                      ? appt.appointment_date.substring(0, 16)
-                      : "N/A"}
-                  </td>
-                  <td>
-                    {appt?.doctor
-                      ? `${appt.doctor.firstName} ${appt.doctor.lastName}`
-                      : "Unknown"}
-                  </td>
-                  <td>{appt?.department || "N/A"}</td>
-                  <td>
-                    <select
-                      value={appt?.status || "Pending"}
-                      onChange={(e) =>
-                        handleUpdateStatus(appt._id, e.target.value)
-                      }
-                      className={
-                        appt?.status === "Pending"
-                          ? "value-pending"
-                          : appt?.status === "Accepted"
-                          ? "value-accepted"
-                          : "value-rejected"
-                      }
-                    >
-                      <option value="Pending">Pending</option>
-                      <option value="Accepted">Accepted</option>
-                      <option value="Rejected">Rejected</option>
-                    </select>
-                  </td>
-                  <td>
-                    {appt?.hasVisited ? (
-                      <GoCheckCircleFill className="green" />
-                    ) : (
-                      <AiFillCloseCircle className="red" />
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {appointments && appointments.length > 0
+                ? appointments.map((appointment) => (
+                    <tr key={appointment._id}>
+                      <td>{`${appointment.firstName} ${appointment.lastName}`}</td>
+                      <td>{appointment.appointment_date.substring(0, 16)}</td>
+                      <td>{`${appointment.doctor.firstName} ${appointment.doctor.lastName}`}</td>
+                      <td>{appointment.department}</td>
+                      <td>
+                        <select
+                          className={
+                            appointment.status === "Pending"
+                              ? "value-pending"
+                              : appointment.status === "Accepted"
+                              ? "value-accepted"
+                              : "value-rejected"
+                          }
+                          value={appointment.status}
+                          onChange={(e) =>
+                            handleUpdateStatus(appointment._id, e.target.value)
+                          }
+                        >
+                          <option value="Pending" className="value-pending">
+                            Pending
+                          </option>
+                          <option value="Accepted" className="value-accepted">
+                            Accepted
+                          </option>
+                          <option value="Rejected" className="value-rejected">
+                            Rejected
+                          </option>
+                        </select>
+                      </td>
+                      <td>{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
+                    </tr>
+                  ))
+                : "No Appointments Found!"}
             </tbody>
           </table>
-        )}
-      </div>
-    </section>
+
+          {}
+        </div>
+      </section>
+    </>
   );
 };
 
