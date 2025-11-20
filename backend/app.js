@@ -37,6 +37,13 @@ app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
 
+app.get("/api/v1/test", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is working!",
+  });
+});
+
 dbConnection();
 
 app.use(errorMiddleware);
