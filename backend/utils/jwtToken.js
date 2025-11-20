@@ -12,17 +12,18 @@ export const generateToken = (user, message, statusCode, res) => {
   // Determine cookie name based on role
   const cookieName = user.role === "Admin" ? "adminToken" : "patientToken";
 
-  // Detect production
+  // Detect production environment
   const isProduction = process.env.NODE_ENV === "production";
 
-  // Send token in HTTP-only, secure cookie
+  // Send token in HTTP-only cookie
   res
     .status(statusCode)
     .cookie(cookieName, token, {
-      expires: new Date(Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      httpOnly: true,
+      expires: new Date(Date.now() + Number(process.env.COOKIE_EXPIRES) * 24 * 60 * 60 * 1000),
+      httpOnly: true,                 // JS cannot access
       secure: isProduction,           // secure only in production
-      sameSite: isProduction ? "none" : "lax", // cross-site cookies in prod
+      sameSite: isProduction ? "none" : "lax", // allow cross-site cookies
+      path: "/",                      // cookie valid for all routes
     })
     .json({
       success: true,
