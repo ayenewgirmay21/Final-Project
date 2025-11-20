@@ -14,8 +14,8 @@ config({path: "./config/config.env" });
 app.use(
   cors({
     origin: [
-      process.env.FRONTEND_URL_ONE || "http://localhost:5173",
-      process.env.FRONTEND_URL_TWO || "http://localhost:5174"
+      process.env.FRONTEND_URL_ONE || "https://mediserve-frontend-final-project.vercel.app",
+      process.env.FRONTEND_URL_TWO || "https://mediserve-dashbboard-final-project.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
