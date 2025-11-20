@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       process.env.FRONTEND_URL_ONE || "https://mediserve-frontend-final-project.vercel.app",
-      process.env.FRONTEND_URL_TWO || "https://mediserve-dashboard-final-project.vercel.app"
+      process.env.FRONTEND_URL_TWO || "https://mediserve-frontend-final-project.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
