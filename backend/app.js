@@ -14,22 +14,32 @@ const app = express();
 // Load environment variables
 config({ path: "./config/config.env" });
 
-// CORS setup
+// === CORS setup ===
+const allowedOrigins = [
+  "https://mediserve-dashboard-final-project.vercel.app",
+  "https://mediserve-frontend-final-project.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: [
-      "https://mediserve-dashboard-final-project.vercel.app",
-      "https://mediserve-frontend-final-project.vercel.app",
-      "http://localhost:5173",
-      "http://localhost:3000",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Allow preflight OPTIONS request
+// Preflight requests
 app.options("*", cors());
 
 // Middlewares
