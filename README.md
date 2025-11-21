@@ -16,7 +16,6 @@
 * [Screenshots](#screenshots)
 * [API Endpoints](#api-endpoints)
 * [Contributing](#contributing)
-* [License](#license)
 
 ---
 
@@ -25,7 +24,7 @@
 **MediServe** is a full-stack Hospital Management and Appointment System built with the **MERN stack**.
 This platform allows hospital staff, doctors, and patients to efficiently manage appointments, doctor availability, and patient records in a secure and organized manner.
 
-The system is **live** and accessible via Render at: [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
+The system is **live** and accessible via vercel at: [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
 
 ---
 
@@ -104,7 +103,10 @@ npm start
 cd frontend
 npm run dev
 ```
+#Screenshots
+[Signup](Signup/)
+[Appointment_Scheduling](Appointment_Scheduling/)
+[Dashboard](Dashboard/)
+[Doctor_Management](Doctor_Management/)
+
 Built with ❤️ by ***Ayenew Girmay*** and ***Mulusew Desale***
-
-
-The application should now be running at [http://local
