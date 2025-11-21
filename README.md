@@ -112,7 +112,7 @@ Once the application is running or when accessing the live deployed version, her
 🔹 1. Visit the Platform
 
 Open
-👉[ https://mern-mediserve.onrender.com](https://mediserve-frontend-final-project.vercel.app/)
+👉[https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
 
 🔹 2. Register / Login
 
@@ -187,8 +187,11 @@ POST /api/v1/auth/login – Login user
 GET /api/v1/doctors – Fetch all doctors
 
 POST /api/v1/appointments – Create new appointment
+
 GET /api/v1/patients – Fetch all patients (Admin only)
+
 For full API documentation, use Postman or Swagger.
+---
 Built ❤️ by ***Ayenew Girmay*** and ***Mulusew Desale***
 
 
