@@ -13,9 +13,7 @@
 * [Technologies Used](#technologies-used)
 * [Installation & Setup](#installation--setup)
 * [Usage](#usage)
-* [Screenshots](#screenshots)
 * [API Endpoints](#api-endpoints)
-* [Contributing](#contributing)
 
 ---
 
@@ -105,7 +103,7 @@ npm start
 cd frontend
 npm run dev
 ```
-Usage
+##Usage
 
 Once the application is running or when accessing the live deployed version, here is how to use MediServe:
 
@@ -178,7 +176,7 @@ Desktops
 
 ---
 
-API Endpoints
+##API Endpoints
 
 POST /api/v1/auth/register – Register user
 
