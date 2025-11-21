@@ -14,16 +14,18 @@ config({path: "./config/config.env" });
 app.use(
   cors({
     origin: [
-      "https://mediserve-frontend-final-project.vercel.app",
       "https://mediserve-dashboard-final-project.vercel.app",
-      process.env.FRONTEND_URL_ONE,
-      process.env.FRONTEND_URL_TWO
+      "https://mediserve-frontend-final-project.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:5174"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// Required for preflight requests
+
+// allow preflight
 app.options("*", cors());
 
 app.use(cookieParser());

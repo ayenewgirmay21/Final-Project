@@ -7,7 +7,7 @@ export const generateToken = (user, message, statusCode, res) => {
       ? "adminToken"
       : "patientToken";
 
-  // Convert cookie expiry to Number
+  // Convert cookie expiry to number
   const cookieExpireDays = Number(process.env.COOKIE_EXPIRES) || 5;
 
   res
@@ -15,8 +15,9 @@ export const generateToken = (user, message, statusCode, res) => {
     .cookie(cookieName, token, {
       expires: new Date(Date.now() + cookieExpireDays * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Only HTTPS in production
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: true,        // REQUIRED for Render + Vercel (HTTPS only)
+      sameSite: "none",    // REQUIRED for cross-domain cookies
+      path: "/",           // send cookie on all routes
     })
     .json({
       success: true,
