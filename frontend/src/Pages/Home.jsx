@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Hero
         title={
-          "Welcome to MediServe Medical Institute | Your Trusted Healthcare Provider"
+          "Welcome to MediServe Medical Solution | Your Trusted Healthcare Provider"
         }
         imageUrl={"/hero.png"}
       />
