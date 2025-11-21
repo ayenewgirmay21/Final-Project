@@ -25,7 +25,7 @@
 This platform allows hospital staff, doctors, and patients to efficiently manage appointments, doctor availability, and patient records in a secure and organized manner.
 
 The system is **live** and accessible via vercel at: [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
-
+The system Admin Dashboard is **live** and accessible via vercel at: [https://mediserve-dashboard-final-project.vercel.app](https://mediserve-dashboard-final-project.vercel.app/)
 ---
 
 ## Features
