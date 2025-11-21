@@ -1,6 +1,6 @@
 # MediServe Hospital Management & Appointment System
 
-![MediServe Logo](https://via.placeholder.com/150)
+![MediServe Logo](https://github.com/ayenewgirmay21/Final-Project/blob/a632570ecef50fda35410eb7a526ea0a90b2c041/frontend/public/logo.png)
 
 **Live Demo:** [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
 
