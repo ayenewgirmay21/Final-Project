@@ -105,5 +105,94 @@ npm start
 cd frontend
 npm run dev
 ```
+Usage
 
+Once the application is running or when accessing the live deployed version, here is how to use MediServe:
+
+🔹 1. Visit the Platform
+
+Open
+👉[ https://mern-mediserve.onrender.com](https://mediserve-frontend-final-project.vercel.app/)
+
+🔹 2. Register / Login
+
+Users can create accounts based on role:
+
+Patient
+
+Admin
+
+(Doctors are added by the Admin.)
+
+🔹 3. Patient Features
+
+Book appointments with available doctors
+
+View appointment history
+
+Send messages to doctors
+
+Update profile information
+
+🔹 4. Admin Features
+
+Add, edit, and delete doctors
+
+View all patient accounts
+
+View and manage all appointments
+
+Access full dashboard analytics
+
+🔹 5. Doctor Features
+
+View their schedule
+
+Manage appointment statuses
+
+Communicate with patients
+
+Update profile details
+
+🔹 6. Navigation
+
+The UI includes:
+
+Top navigation bar
+
+Role-based dashboard
+
+Appointment booking form
+
+Doctor management pages
+
+Message center
+
+🔹 7. Mobile-Friendly
+
+MediServe is fully responsive and works smoothly on:
+
+Smartphones
+Tablets
+Desktops
+
+---
+
+API Endpoints
+
+POST /api/v1/auth/register – Register user
+
+POST /api/v1/auth/login – Login user
+
+GET /api/v1/doctors – Fetch all doctors
+
+POST /api/v1/appointments – Create new appointment
+GET /api/v1/patients – Fetch all patients (Admin only)
+For full API documentation, use Postman or Swagger.
 Built ❤️ by ***Ayenew Girmay*** and ***Mulusew Desale***
+
+
+
+
+
+
