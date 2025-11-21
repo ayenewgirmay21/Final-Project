@@ -2,7 +2,7 @@
 
 ![MediServe Logo](https://via.placeholder.com/150)
 
-**Live Demo:** [https://mern-mediserve.onrender.com](https://mern-mediserve.onrender.com)
+**Live Demo:** [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
 
 ---
 
@@ -25,7 +25,7 @@
 **MediServe** is a full-stack Hospital Management and Appointment System built with the **MERN stack**.
 This platform allows hospital staff, doctors, and patients to efficiently manage appointments, doctor availability, and patient records in a secure and organized manner.
 
-The system is **live** and accessible via Render at: [https://mern-mediserve.onrender.com](https://mern-mediserve.onrender.com)
+The system is **live** and accessible via Render at: [https://mediserve-frontend-final-project.vercel.app](https://mediserve-frontend-final-project.vercel.app/)
 
 ---
 
